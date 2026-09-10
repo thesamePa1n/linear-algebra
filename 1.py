@@ -70,7 +70,21 @@ print('Норма матрицы Ainf:', norm_Ainf)
 print('Готовая норма матрицы Ainf:', linalg.norm(matrix, ord=np.inf))
 print()
 
-if (1 / np.sqrt(n)) * norm_A1 <= norm_AE <= np.sqrt(n) * norm_A1:
-    print('Неравенство выполнено при alpha = 1')
-if (1 / np.sqrt(n)) * norm_Ainf <= norm_AE <= np.sqrt(n) * norm_Ainf:
-    print('Неравенство выполнено при alpha = inf')
+n_values = [3, 5, 10, 20]
+
+for n in n_values:
+    matrix = np.random.randint(-10, 11, size=(n, n))
+
+    norm_A1 = norma_A1(matrix)
+    norm_AE = norma_AE(matrix)
+    norm_Ainf = norma_Ainf(matrix)
+
+    print(f'n = {n}')
+
+    if (1 / np.sqrt(n)) * norm_A1 <= norm_AE <= np.sqrt(n) * norm_A1:
+        print('Неравенство выполнено для alpha = 1')
+
+    if (1 / np.sqrt(n)) * norm_Ainf <= norm_AE <= np.sqrt(n) * norm_Ainf:
+        print('Неравенство выполнено для alpha = inf')
+
+    print()
